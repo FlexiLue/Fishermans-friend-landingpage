@@ -1,0 +1,26 @@
+nav {
+  padding-top: 10px;
+}
+nav .logo {
+  display: block;
+  margin: auto;
+  width: 220px;
+}
+nav .logo svg {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+main .hero {
+  background-color: #7ee3c5;
+}
+main .hero h1 {
+  text-transform: capitalize;
+  color: white;
+}
+main .flex-container {
+  display: flex;
+}
+
+/*# sourceMappingURL=index.css.map */
