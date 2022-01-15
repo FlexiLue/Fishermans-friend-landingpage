@@ -1,5 +1,78 @@
+@font-face {
+  font-family: TradeGothicNextLTPro;
+  src: url(../assets/fonts/tradegothicnextltpro-rg.woff2);
+  font-weight: 300 600;
+}
+@font-face {
+  font-family: TradeGothicNextLTPro;
+  src: url(../assets/fonts/tradegothicnextltpro-bd.woff2);
+  font-weight: 600 800;
+}
+@font-face {
+  font-family: TradeGothicNextLTPro;
+  src: url(../assets/fonts/tradegothicnextltpro-lt.woff2);
+  font-weight: 100 200;
+}
+@font-face {
+  font-family: FFGoodWebProCompressed;
+  src: url(../assets/fonts/ffgoodwebprocompressedultra.woff2);
+  font-weight: bold;
+}
+body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: FFGoodWebProCompressed;
+  font-weight: 900;
+  padding: 0;
+  text-transform: capitalize;
+  line-height: 0.9em;
+  margin: 0;
+}
+
+p {
+  font-family: TradeGothicNextLTPro;
+  margin: 0;
+}
+
+.strpies-container {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  color: #1f1e21;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #47d7ac;
+  border: 2px solid transparent;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  border-radius: 0;
+  height: 54px;
+  width: 170px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.strpies-container p {
+  margin: 10px 0;
+}
+
+.svg-stripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: #fff;
+  z-index: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
 nav {
-  padding-top: 10px;
+  padding: 10px 0;
 }
 nav .logo {
   display: block;
@@ -12,15 +85,176 @@ nav .logo svg {
   overflow: hidden;
 }
 
+/* Circle Animations */
+.path {
+  stroke-dasharray: 252;
+  stroke-dashoffset: 252;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .path-animation {
+    animation: dash 1s linear forwards;
+    animation-delay: 0.5s;
+  }
+}
+@keyframes dash {
+  from {
+    stroke-dashoffset: 252;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+main {
+  /* Numbers With Circles */
+}
+main .container {
+  max-width: 1350px;
+  padding: 50px 0;
+  margin-right: auto;
+  margin-left: auto;
+}
 main .hero {
   background-color: #7ee3c5;
 }
-main .hero h1 {
-  text-transform: capitalize;
+main .hero p {
   color: white;
+  font-size: 1.25rem;
+}
+main .hero h1 {
+  color: white;
+  font-size: 80px;
+  letter-spacing: 0.02em;
+}
+main .hero h1 span {
+  font-style: normal;
+  -webkit-text-stroke: 1.5px;
+  -webkit-text-fill-color: transparent;
+}
+main .hero img {
+  width: 70%;
 }
 main .flex-container {
   display: flex;
+  flex-wrap: wrap;
+}
+main .flex-container .img-container {
+  margin-left: 10%;
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+main .flex-container .text-container {
+  margin-top: 20px;
+  margin-left: 10%;
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+main .numbers {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin: 20px;
+}
+main .numbers .circle-container {
+  position: relative;
+}
+main .numbers .circle-number {
+  font-family: TradeGothicNextLTPro;
+  font-weight: bold;
+  font-size: 1.8em;
+  color: #da291c;
+}
+main .numbers .circle-text {
+  padding-left: 10px;
+  font-weight: bold;
+  letter-spacing: 0.8;
+  font-size: 1.6em;
+  color: #da291c;
+  place-self: center;
+}
+main .brand .brand-img {
+  background-image: url(https://fishermansfriend.com/media/pages/home/fdb3d7dec3-1640267032/guys-600x600-crop-50-50.jpg);
+  background-position: 50% 50%;
+  padding-top: 4vh;
+  padding-left: 10vw;
+  padding: 10vw 4vh;
+  background-size: cover;
+}
+main .brand h1 {
+  color: white;
+  font-size: 18vw;
+  letter-spacing: 0;
+}
+main .brand .stripes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+}
+main .brand .stripes {
+  background-image: repeating-linear-gradient(135deg, transparent, transparent 2.3125em, #fff 0, #fff 4.625em);
+  background-color: #e56960;
+  display: block;
+  width: 100%;
+  height: 30vw;
+  margin-top: -8vw;
+}
+main .brand .stripes-container {
+  position: relative;
+}
+main .brand .text-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-top: -22vw;
+}
+main .brand .text-grid .text {
+  padding-top: 3vh;
+  padding-left: 10vw;
+  color: #1f1e21;
+  background-color: white;
+}
+main .brand .text-grid .text h4 {
+  color: #1f1e21;
+  font-size: 3rem;
+}
+main .brand .text-grid .text p {
+  margin-top: 1.5em;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+main .products .scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  background: #4DA0AE;
+}
+main .products .scrolling-wrapper .card {
+  display: inline-block;
+}
+main .products .scrolling-wrapper .container {
+  width: 70vw;
+  margin: 0 10vw;
+}
+main .products .scrolling-wrapper .container img {
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* main{
+      .hero{
+          img{
+              width: 70%;
+          }
+      }
+      .flex-container{
+          .img-container{
+              flex: 0 0 45%;
+              max-width: 45%;
+          }
+          .text-container{
+              flex: 0 0 45%;
+              max-width: 45%;
+          }
+      }
+  } */
 }
 
 /*# sourceMappingURL=index.css.map */
