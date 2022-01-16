@@ -18,6 +18,10 @@
   src: url(../assets/fonts/ffgoodwebprocompressedultra.woff2);
   font-weight: bold;
 }
+@font-face {
+  font-family: ff-icons;
+  src: url(../assets/fonts/ff-icons.woff2);
+}
 body {
   margin: 0;
 }
@@ -34,26 +38,7 @@ h1, h2, h3, h4, h5 {
 p {
   font-family: TradeGothicNextLTPro;
   margin: 0;
-}
-
-.strpies-container {
-  position: relative;
-  display: inline-block;
-  font-weight: 700;
-  color: #1f1e21;
-  text-align: center;
-  vertical-align: middle;
-  background-color: #47d7ac;
-  border: 2px solid transparent;
-  font-size: 1.0625rem;
   line-height: 1.6;
-  border-radius: 0;
-  height: 54px;
-  width: 170px;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-.strpies-container p {
-  margin: 10px 0;
 }
 
 .svg-stripes {
@@ -84,6 +69,9 @@ nav .logo svg {
   height: 100%;
   overflow: hidden;
 }
+nav #logoFull {
+  display: none;
+}
 
 /* Circle Animations */
 .path {
@@ -109,7 +97,7 @@ main {
   /* Numbers With Circles */
 }
 main .container {
-  max-width: 1350px;
+  max-width: 1025px;
   padding: 50px 0;
   margin-right: auto;
   margin-left: auto;
@@ -120,9 +108,13 @@ main .hero {
 main .hero p {
   color: white;
   font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 200;
+  margin: 2vh 0;
 }
 main .hero h1 {
   color: white;
+  text-transform: uppercase;
   font-size: 80px;
   letter-spacing: 0.02em;
 }
@@ -132,18 +124,43 @@ main .hero h1 span {
   -webkit-text-fill-color: transparent;
 }
 main .hero img {
-  width: 70%;
+  display: block;
+  height: 40vh;
+  margin: auto;
 }
-main .flex-container {
+main .hero .stripes-container {
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  color: #1f1e21;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #47d7ac;
+  border: 2px solid transparent;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  border-radius: 0;
+  height: 54px;
+  width: 170px;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+main .hero .stripes-container:hover {
+  background-color: #2eb98f;
+}
+main .hero .stripes-container p {
+  margin: 10px 0;
+  font-weight: 700;
+}
+main .hero .flex-container {
   display: flex;
   flex-wrap: wrap;
 }
-main .flex-container .img-container {
+main .hero .flex-container .img-container {
   margin-left: 10%;
   flex: 0 0 80%;
   max-width: 80%;
 }
-main .flex-container .text-container {
+main .hero .flex-container .text-container {
   margin-top: 20px;
   margin-left: 10%;
   flex: 0 0 80%;
@@ -151,11 +168,15 @@ main .flex-container .text-container {
 }
 main .numbers {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
   margin: 20px;
 }
 main .numbers .circle-container {
   position: relative;
+}
+main .numbers .circle-container div {
+  margin: auto;
+  width: fit-content;
 }
 main .numbers .circle-number {
   font-family: TradeGothicNextLTPro;
@@ -169,10 +190,10 @@ main .numbers .circle-text {
   letter-spacing: 0.8;
   font-size: 1.6em;
   color: #da291c;
-  place-self: center;
+  align-self: center;
 }
 main .brand .brand-img {
-  background-image: url(https://fishermansfriend.com/media/pages/home/fdb3d7dec3-1640267032/guys-600x600-crop-50-50.jpg);
+  background-image: url(../assets/brand.png);
   background-position: 50% 50%;
   padding-top: 4vh;
   padding-left: 10vw;
@@ -181,6 +202,7 @@ main .brand .brand-img {
 }
 main .brand h1 {
   color: white;
+  text-transform: uppercase;
   font-size: 18vw;
   letter-spacing: 0;
 }
@@ -189,6 +211,8 @@ main .brand .stripes-grid {
   grid-template-columns: 1fr 1.5fr;
 }
 main .brand .stripes {
+  position: relative;
+  z-index: 0;
   background-image: repeating-linear-gradient(135deg, transparent, transparent 2.3125em, #fff 0, #fff 4.625em);
   background-color: #e56960;
   display: block;
@@ -200,6 +224,8 @@ main .brand .stripes-container {
   position: relative;
 }
 main .brand .text-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 3fr 1fr;
   margin-top: -22vw;
@@ -220,41 +246,442 @@ main .brand .text-grid .text p {
   font-weight: 400;
   line-height: 1.6;
 }
+main .products {
+  margin: 5vh 0;
+}
 main .products .scrolling-wrapper {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  background: #4DA0AE;
+  background-color: #4da0ae;
+  transition: background-color 0.5s linear 0.5s;
+}
+main .products .scrolling-wrapper::-webkit-scrollbar {
+  background: transparent;
+  /* Chrome/Safari/Webkit */
+  width: 0px;
+}
+main .products .scrolling-wrapper.spearmint {
+  background-color: #4da0ae;
+}
+main .products .scrolling-wrapper.rasberry {
+  background-color: #e95eb5;
+}
+main .products .scrolling-wrapper.tropical {
+  background-color: #ffbf4d;
 }
 main .products .scrolling-wrapper .card {
   display: inline-block;
+  margin-right: 10vw;
+}
+main .products .scrolling-wrapper .card#tropical-tablet {
+  display: none;
 }
 main .products .scrolling-wrapper .container {
   width: 70vw;
   margin: 0 10vw;
+  padding: 40px 0;
 }
 main .products .scrolling-wrapper .container img {
+  height: 40vh;
+}
+main .products .scrolling-wrapper .container h4 {
+  color: #1f1e21;
+  font-size: 3rem;
+}
+main .products .scrolling-wrapper .container p {
+  color: #1f1e21;
+  white-space: normal;
+}
+main .products .scrolling-wrapper .container .text-container {
+  margin: 2vh 0;
+}
+main .products .scrolling-wrapper .container .text-container.right {
+  margin-left: 15vw;
+  margin-right: -15vw;
+}
+main .products-fullscreen {
+  display: none;
+}
+main .testimonial .grid {
+  margin: 10vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+main .testimonial .grid .img-container {
+  margin: auto;
+  max-width: 35vw;
+}
+main .testimonial .grid img {
   width: 100%;
+  border-radius: 50%;
+}
+main .testimonial .grid h5 {
+  padding: 3vh 0;
+  font-size: 3rem;
+  text-align: center;
+  color: #1f1e21;
+}
+main .infos .tabelle {
+  margin: 10vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+main .infos .tabelle .label {
+  padding: 5vw;
+  border-right: solid #1f1e21;
+}
+main .infos .tabelle #wirkdauer-container {
+  grid-column-start: span 3;
+}
+main .infos .tabelle #wirkdauer-container p {
+  margin: 0.8em 0 0.8em 0.8em;
+  border-bottom: solid #1f1e21 0.5px;
+  padding-left: 0.5em;
+}
+main .infos .tabelle #zeiten p {
+  margin: 0.8em 0.8em 0.8em 0;
+  border-bottom: solid #1f1e21 0.5px;
+  text-align: end;
+  padding-right: 0.5em;
+}
+main .infos .tabelle .siegel {
+  grid-column-start: span 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border-bottom: solid #1f1e21;
+  border-top: solid #1f1e21;
+  text-align: center;
+  font-weight: bold;
+  padding: 2vw;
+}
+
+footer .social-container {
+  margin: 3vh auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  width: 60%;
+  max-width: 450px;
+}
+footer .social-container div {
+  justify-self: center;
+}
+footer .social-container .icon {
+  justify-self: center;
+  position: relative;
+  font-family: ff-icons;
+  font-size: 3.5rem;
+  color: #6c6c6e;
+  text-decoration: none;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 1em;
+  width: 1em;
+  height: 1em;
+  transition: opacity 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+footer .social-container .icon:hover {
+  color: white !important;
+}
+footer .social-container .icon:hover::after {
+  opacity: 1;
+  border-width: 0.56em;
+}
+footer .social-container .icon::after {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.25s ease-out, border-width 0.25s ease-in-out, width 0.25s ease-out, height 0.25s ease-out;
+  opacity: 0;
+  z-index: -1;
+  border: 0 solid #da291c;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-radius: 50%;
+  content: "";
+}
+footer .social-container .icon.twitter:before {
+  content: "\ea0a";
+}
+footer .social-container .icon.facebook:before {
+  content: "\ea07";
+}
+footer .social-container .icon.instagram:before {
+  content: "\ea09";
+}
+footer .navigation-container {
+  width: 80%;
+  margin: auto;
+}
+footer .navigation-container .flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+footer .navigation-container .flex a {
+  font-family: TradeGothicNextLTPro;
+  font-weight: 100;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #1f1e21;
+  padding: 0.5em;
+  width: 100%;
+  text-align: center;
+}
+footer .logo img {
+  display: block;
+  margin: 5vh auto;
+  width: 30vw;
+  max-width: 250px;
+}
+footer .logo p {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #1f1e21;
 }
 
 @media only screen and (min-width: 768px) {
-  /* main{
-      .hero{
-          img{
-              width: 70%;
-          }
-      }
-      .flex-container{
-          .img-container{
-              flex: 0 0 45%;
-              max-width: 45%;
-          }
-          .text-container{
-              flex: 0 0 45%;
-              max-width: 45%;
-          }
-      }
-  } */
+  nav #logoReduced {
+    display: none;
+  }
+  nav #logoFull {
+    display: block;
+  }
+
+  main .hero .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  main .hero .flex-container .img-container {
+    margin-left: 5%;
+    flex: 0 0 30%;
+  }
+  main .hero .flex-container .img-container img {
+    height: auto;
+    max-width: 100%;
+  }
+  main .hero .flex-container .text-container {
+    margin: auto 5%;
+    flex: 0 0 55%;
+  }
+  main .numbers {
+    max-width: 1025px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 20px auto;
+    text-align: center;
+  }
+  main .numbers #text-a {
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+  main .numbers #text-b {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+  main .numbers .circle-container {
+    position: relative;
+  }
+  main .numbers .circle-container div {
+    margin: auto;
+    width: fit-content;
+  }
+  main .numbers .circle-number {
+    font-family: TradeGothicNextLTPro;
+    font-weight: bold;
+    font-size: 1.8em;
+    color: #da291c;
+  }
+  main .numbers .circle-text {
+    padding-left: 10px;
+    font-weight: bold;
+    letter-spacing: 0.8;
+    font-size: 1.8em;
+    color: #da291c;
+    align-self: center;
+  }
+  main .products {
+    margin: 5vh 0;
+  }
+  main .products .scrolling-wrapper .card {
+    display: inline-block;
+    margin-right: 10vw;
+  }
+  main .products .scrolling-wrapper .card#tropical-tablet {
+    display: inline-block;
+  }
+  main .products .scrolling-wrapper .card#tropical-smartphone {
+    display: none;
+  }
+  main .products .scrolling-wrapper .container {
+    width: 70vw;
+    margin: 0 10vw;
+    padding: 40px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  main .products .scrolling-wrapper .container .text-container {
+    grid-column-start: 2;
+    margin: 2vh 0;
+  }
+  main .products .scrolling-wrapper .container .text-container.right {
+    margin: 0;
+  }
+  main .products .scrolling-wrapper .container .img-container {
+    grid-column-start: 1;
+  }
+  main .testimonial .grid .img-container {
+    flex: 0 0 25%;
+  }
+  main .testimonial .grid .img-container img {
+    display: block;
+    width: 100%;
+    max-width: 15vw;
+    margin: auto;
+  }
+  main .testimonial .grid .text-container {
+    flex: 0 0 70%;
+  }
+  main .testimonial .grid h5 {
+    text-align: left;
+  }
+  main .infos .tabelle #wirkdauer-container p {
+    font-size: 1.2em;
+  }
+  main .infos .tabelle #zeiten p {
+    font-size: 1.2em;
+  }
+  main .infos .tabelle .siegel {
+    font-size: 1.2em;
+  }
+
+  footer .navigation-container .flex a {
+    width: auto;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  main .products {
+    display: none;
+  }
+  main .products-fullscreen {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 5vw 0;
+  }
+  main .products-fullscreen .card {
+    padding: 5vh 0;
+    margin: 1vw;
+  }
+  main .products-fullscreen .card[data-transition-color=spearmint] {
+    background-color: #4da0ae;
+  }
+  main .products-fullscreen .card[data-transition-color=tropical] {
+    background-color: #ffbf4d;
+  }
+  main .products-fullscreen .card[data-transition-color=rasberry] {
+    background-color: #e95eb5;
+  }
+  main .products-fullscreen .img-container img {
+    display: block;
+    margin: auto;
+    height: 50vh;
+  }
+  main .products-fullscreen .text-container {
+    padding: 1em;
+  }
+  main .products-fullscreen .text-container h4 {
+    font-size: 3em;
+  }
+  main .products-fullscreen .text-container p {
+    padding-top: 10px;
+    font-size: 1.2em;
+    line-height: 1.6;
+  }
+  main .brand {
+    width: 60%;
+    margin: auto;
+  }
+  main .brand .brand-img {
+    max-width: 40%;
+    max-height: 60vh;
+    background-image: url(../assets/brand.png);
+    background-position: 50% 50%;
+    padding: 10vw 4vh;
+    background-size: cover;
+  }
+  main .brand h1 {
+    color: #da291c;
+    text-transform: uppercase;
+    font-size: 8vw;
+    letter-spacing: 0;
+    margin: -8vw -90% 0 90%;
+  }
+  main .brand .stripes-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+  }
+  main .brand .stripes {
+    grid-column-start: 1;
+    position: relative;
+    z-index: -1;
+    background-image: repeating-linear-gradient(135deg, transparent, transparent 2.3125em, #fff 0, #fff 4.625em);
+    background-color: #e56960;
+    display: block;
+    width: 100%;
+    height: 30vh;
+    margin-left: -10vw;
+    margin-top: -15vh;
+  }
+  main .brand .stripes-container {
+    position: relative;
+  }
+  main .brand .text-grid {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: -10vw;
+  }
+  main .brand .text-grid .text {
+    width: 70%;
+    grid-column-start: 2;
+    padding-top: 3vh;
+    padding-left: 10vw;
+    color: #1f1e21;
+    background-color: white;
+  }
+  main .brand .text-grid .text h4 {
+    color: #1f1e21;
+    font-size: 5rem;
+  }
+  main .brand .text-grid .text p {
+    margin-top: 1.5em;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  main .infos .tabelle #wirkdauer-container p {
+    font-size: 1.5em;
+  }
+  main .infos .tabelle #zeiten p {
+    font-size: 1.5em;
+  }
+  main .infos .tabelle .siegel {
+    font-size: 1.5em;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
